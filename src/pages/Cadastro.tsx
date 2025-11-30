@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { Building2, User, Mail, Phone } from 'lucide-react';
+import { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { Building2, User, Mail, Phone } from "lucide-react";
 
 interface CadastroData {
   cnpj: string;
@@ -17,57 +17,57 @@ const Cadastro = () => {
   const propostaData = location.state;
 
   const [formData, setFormData] = useState<CadastroData>({
-    cnpj: '',
-    nomeEmpresa: '',
-    nomeResponsavel: '',
-    email: '',
-    telefone: '',
-    aceitaTermos: false
+    cnpj: "38338317000105",
+    nomeEmpresa: "TREINA TECH",
+    nomeResponsavel: "Raquel Guedes",
+    email: "treinatechdesenvolviment@gmail.com",
+    telefone: "7592881730",
+    aceitaTermos: true,
   });
 
   const [errors, setErrors] = useState({
-    cnpj: '',
-    nomeEmpresa: '',
-    nomeResponsavel: '',
-    email: '',
-    telefone: '',
-    aceitaTermos: ''
+    cnpj: "",
+    nomeEmpresa: "",
+    nomeResponsavel: "",
+    email: "",
+    telefone: "",
+    aceitaTermos: "",
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = e.target;
     setFormData({
       ...formData,
-      [name]: type === 'checkbox' ? checked : value
+      [name]: type === "checkbox" ? checked : value,
     });
 
     // Limpar erro do campo quando o usuário começar a digitar
     if (errors[name as keyof typeof errors]) {
       setErrors({
         ...errors,
-        [name]: ''
+        [name]: "",
       });
     }
   };
 
   const formatCNPJ = (value: string) => {
-    const numbers = value.replace(/\D/g, '');
+    const numbers = value.replace(/\D/g, "");
     if (numbers.length <= 14) {
       return numbers
-        .replace(/^(\d{2})(\d)/, '$1.$2')
-        .replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3')
-        .replace(/\.(\d{3})(\d)/, '.$1/$2')
-        .replace(/(\d{4})(\d)/, '$1-$2');
+        .replace(/^(\d{2})(\d)/, "$1.$2")
+        .replace(/^(\d{2})\.(\d{3})(\d)/, "$1.$2.$3")
+        .replace(/\.(\d{3})(\d)/, ".$1/$2")
+        .replace(/(\d{4})(\d)/, "$1-$2");
     }
     return value;
   };
 
   const formatTelefone = (value: string) => {
-    const numbers = value.replace(/\D/g, '');
+    const numbers = value.replace(/\D/g, "");
     if (numbers.length <= 11) {
       return numbers
-        .replace(/^(\d{2})(\d)/, '($1) $2')
-        .replace(/(\d{5})(\d)/, '$1-$2');
+        .replace(/^(\d{2})(\d)/, "($1) $2")
+        .replace(/(\d{5})(\d)/, "$1-$2");
     }
     return value;
   };
@@ -78,7 +78,7 @@ const Cadastro = () => {
 
     // Limpar erro do campo
     if (errors.cnpj) {
-      setErrors({ ...errors, cnpj: '' });
+      setErrors({ ...errors, cnpj: "" });
     }
   };
 
@@ -88,7 +88,7 @@ const Cadastro = () => {
 
     // Limpar erro do campo
     if (errors.telefone) {
-      setErrors({ ...errors, telefone: '' });
+      setErrors({ ...errors, telefone: "" });
     }
   };
 
@@ -97,44 +97,45 @@ const Cadastro = () => {
 
     // Limpar erros anteriores
     const newErrors = {
-      cnpj: '',
-      nomeEmpresa: '',
-      nomeResponsavel: '',
-      email: '',
-      telefone: '',
-      aceitaTermos: ''
+      cnpj: "",
+      nomeEmpresa: "",
+      nomeResponsavel: "",
+      email: "",
+      telefone: "",
+      aceitaTermos: "",
     };
 
     // Validação de campos obrigatórios
     let hasError = false;
 
     if (!formData.cnpj) {
-      newErrors.cnpj = 'Este campo é obrigatório';
+      newErrors.cnpj = "Este campo é obrigatório";
       hasError = true;
     }
 
     if (!formData.nomeEmpresa) {
-      newErrors.nomeEmpresa = 'Este campo é obrigatório';
+      newErrors.nomeEmpresa = "Este campo é obrigatório";
       hasError = true;
     }
 
     if (!formData.nomeResponsavel) {
-      newErrors.nomeResponsavel = 'Este campo é obrigatório';
+      newErrors.nomeResponsavel = "Este campo é obrigatório";
       hasError = true;
     }
 
     if (!formData.email) {
-      newErrors.email = 'Este campo é obrigatório';
+      newErrors.email = "Este campo é obrigatório";
       hasError = true;
     }
 
     if (!formData.telefone) {
-      newErrors.telefone = 'Este campo é obrigatório';
+      newErrors.telefone = "Este campo é obrigatório";
       hasError = true;
     }
 
     if (!formData.aceitaTermos) {
-      newErrors.aceitaTermos = 'Você deve aceitar os termos de uso e política de privacidade';
+      newErrors.aceitaTermos =
+        "Você deve aceitar os termos de uso e política de privacidade";
       hasError = true;
     }
 
@@ -145,11 +146,11 @@ const Cadastro = () => {
     }
 
     // Aqui você faria a chamada à API para criar a conta
-    console.log('Dados do cadastro:', formData);
-    console.log('Dados da proposta:', propostaData);
+    console.log("Dados do cadastro:", formData);
+    console.log("Dados da proposta:", propostaData);
 
     // Redirecionar para dashboard
-    navigate('/dashboard', { state: formData });
+    navigate("/dashboard", { state: formData });
   };
 
   return (
@@ -157,9 +158,12 @@ const Cadastro = () => {
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-3">Crie sua conta</h1>
+          <h1 className="text-4xl font-bold text-gray-900 mb-3">
+            Crie sua conta
+          </h1>
           <p className="text-lg text-gray-600">
-            Preencha os dados abaixo para acessar sua proposta e começar sua jornada digital
+            Preencha os dados abaixo para acessar sua proposta e começar sua
+            jornada digital
           </p>
         </div>
 
@@ -180,11 +184,15 @@ const Cadastro = () => {
                 placeholder="00.000.000/0000-00"
                 maxLength={18}
                 className={`w-full px-4 py-3 border-2 rounded-lg focus:ring-2 focus:ring-primary-500 outline-none transition ${
-                  errors.cnpj ? 'border-red-500' : 'border-gray-300 focus:border-primary-500'
+                  errors.cnpj
+                    ? "border-red-500"
+                    : "border-gray-300 focus:border-primary-500"
                 }`}
               />
               {errors.cnpj && (
-                <span className="text-red-500 text-sm mt-1 block">{errors.cnpj}</span>
+                <span className="text-red-500 text-sm mt-1 block">
+                  {errors.cnpj}
+                </span>
               )}
             </div>
 
@@ -201,11 +209,15 @@ const Cadastro = () => {
                 onChange={handleChange}
                 placeholder="Razão social da empresa"
                 className={`w-full px-4 py-3 border-2 rounded-lg focus:ring-2 focus:ring-primary-500 outline-none transition ${
-                  errors.nomeEmpresa ? 'border-red-500' : 'border-gray-300 focus:border-primary-500'
+                  errors.nomeEmpresa
+                    ? "border-red-500"
+                    : "border-gray-300 focus:border-primary-500"
                 }`}
               />
               {errors.nomeEmpresa && (
-                <span className="text-red-500 text-sm mt-1 block">{errors.nomeEmpresa}</span>
+                <span className="text-red-500 text-sm mt-1 block">
+                  {errors.nomeEmpresa}
+                </span>
               )}
             </div>
 
@@ -222,11 +234,15 @@ const Cadastro = () => {
                 onChange={handleChange}
                 placeholder="Seu nome completo"
                 className={`w-full px-4 py-3 border-2 rounded-lg focus:ring-2 focus:ring-primary-500 outline-none transition ${
-                  errors.nomeResponsavel ? 'border-red-500' : 'border-gray-300 focus:border-primary-500'
+                  errors.nomeResponsavel
+                    ? "border-red-500"
+                    : "border-gray-300 focus:border-primary-500"
                 }`}
               />
               {errors.nomeResponsavel && (
-                <span className="text-red-500 text-sm mt-1 block">{errors.nomeResponsavel}</span>
+                <span className="text-red-500 text-sm mt-1 block">
+                  {errors.nomeResponsavel}
+                </span>
               )}
             </div>
 
@@ -243,11 +259,15 @@ const Cadastro = () => {
                 onChange={handleChange}
                 placeholder="seu.email@empresa.com.br"
                 className={`w-full px-4 py-3 border-2 rounded-lg focus:ring-2 focus:ring-primary-500 outline-none transition ${
-                  errors.email ? 'border-red-500' : 'border-gray-300 focus:border-primary-500'
+                  errors.email
+                    ? "border-red-500"
+                    : "border-gray-300 focus:border-primary-500"
                 }`}
               />
               {errors.email && (
-                <span className="text-red-500 text-sm mt-1 block">{errors.email}</span>
+                <span className="text-red-500 text-sm mt-1 block">
+                  {errors.email}
+                </span>
               )}
             </div>
 
@@ -265,19 +285,27 @@ const Cadastro = () => {
                 placeholder="(00) 00000-0000"
                 maxLength={15}
                 className={`w-full px-4 py-3 border-2 rounded-lg focus:ring-2 focus:ring-primary-500 outline-none transition ${
-                  errors.telefone ? 'border-red-500' : 'border-gray-300 focus:border-primary-500'
+                  errors.telefone
+                    ? "border-red-500"
+                    : "border-gray-300 focus:border-primary-500"
                 }`}
               />
               {errors.telefone && (
-                <span className="text-red-500 text-sm mt-1 block">{errors.telefone}</span>
+                <span className="text-red-500 text-sm mt-1 block">
+                  {errors.telefone}
+                </span>
               )}
             </div>
 
             {/* Termos */}
             <div>
-              <div className={`flex items-start space-x-3 p-4 rounded-lg ${
-                errors.aceitaTermos ? 'bg-red-50 border-2 border-red-500' : 'bg-gray-50'
-              }`}>
+              <div
+                className={`flex items-start space-x-3 p-4 rounded-lg ${
+                  errors.aceitaTermos
+                    ? "bg-red-50 border-2 border-red-500"
+                    : "bg-gray-50"
+                }`}
+              >
                 <input
                   type="checkbox"
                   name="aceitaTermos"
@@ -286,12 +314,16 @@ const Cadastro = () => {
                   className="mt-1 w-4 h-4 text-primary-500 border-gray-300 rounded focus:ring-primary-500"
                 />
                 <label className="text-sm text-gray-700">
-                  Aceito os termos de uso e política de privacidade do Vida Conecta. Autorizo o
-                  recebimento de comunicações sobre minha conta e serviços contratados. <span className="text-red-500">*</span>
+                  Aceito os termos de uso e política de privacidade do Vida
+                  Conecta. Autorizo o recebimento de comunicações sobre minha
+                  conta e serviços contratados.{" "}
+                  <span className="text-red-500">*</span>
                 </label>
               </div>
               {errors.aceitaTermos && (
-                <span className="text-red-500 text-sm mt-1 block">{errors.aceitaTermos}</span>
+                <span className="text-red-500 text-sm mt-1 block">
+                  {errors.aceitaTermos}
+                </span>
               )}
             </div>
 
@@ -301,23 +333,37 @@ const Cadastro = () => {
               className="w-full bg-gradient-to-r from-primary-500 to-secondary-500 hover:from-primary-600 hover:to-secondary-600 text-white font-bold py-4 px-6 rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2"
             >
               <span>Criar conta e acessar plataforma</span>
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M13 7l5 5m0 0l-5 5m5-5H6"
+                />
               </svg>
             </button>
 
             {/* Info Text */}
             <p className="text-center text-sm text-gray-600">
-              Após criar sua conta, você será automaticamente direcionado ao painel de onboarding
-              onde poderá acompanhar todos os passos da implementação.
+              Após criar sua conta, você será automaticamente direcionado ao
+              painel de onboarding onde poderá acompanhar todos os passos da
+              implementação.
             </p>
           </form>
 
           {/* Login Link */}
           <div className="mt-8 text-center border-t border-gray-200 pt-6">
             <p className="text-gray-600">
-              Já tem uma conta?{' '}
-              <a href="#login" className="text-primary-500 hover:text-primary-600 font-semibold">
+              Já tem uma conta?{" "}
+              <a
+                href="#login"
+                className="text-primary-500 hover:text-primary-600 font-semibold"
+              >
                 Faça login
               </a>
             </p>

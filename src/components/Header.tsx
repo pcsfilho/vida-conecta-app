@@ -38,12 +38,12 @@ const Header = () => {
             >
               Contato
             </a>
-            <a
+            {/* <a
               href="#entrar"
               className="bg-primary-500 text-white px-5 py-2 rounded-lg hover:bg-primary-600 font-semibold transition-colors"
             >
               Entrar
-            </a>
+            </a> */}
           </div>
 
           <button className="md:hidden p-2">

@@ -16,13 +16,13 @@ function App() {
           <Route path="/" element={
             <>
               <Header />
-              <main><Home /></main>
+              <main><ParaEmpresas /></main>
             </>
           } />
-          <Route path="/para-empresas" element={
+          <Route path="/orcamento" element={
             <>
               <Header />
-              <main><ParaEmpresas /></main>
+              <main><Home /></main>
             </>
           } />
           <Route path="/proposta" element={

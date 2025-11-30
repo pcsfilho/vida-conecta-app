@@ -6,9 +6,9 @@ import vivaLogo from "../assets/viva+.png";
 const HeroSection = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    employees: "",
-    cnae: "",
-    units: "",
+    employees: 10,
+    cnae: "CANAE",
+    units: 10,
     maturity: "initial",
   });
 
@@ -80,11 +80,7 @@ const HeroSection = () => {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
             <div className="mb-6">
-              <img
-                src={vivaLogo}
-                alt="Viva+"
-                className="h-24 md:h-32 w-auto"
-              />
+              <img src={vivaLogo} alt="Viva+" className="h-24 md:h-32 w-auto" />
             </div>
 
             <p className="text-xl text-gray-700 leading-relaxed font-semibold">
@@ -128,11 +124,15 @@ const HeroSection = () => {
                   onChange={handleChange}
                   placeholder="Ex: 150"
                   className={`w-full px-4 py-3 border-2 rounded-lg focus:ring-2 focus:ring-primary-500 outline-none transition ${
-                    errors.employees ? 'border-red-500' : 'border-gray-300 focus:border-primary-500'
+                    errors.employees
+                      ? "border-red-500"
+                      : "border-gray-300 focus:border-primary-500"
                   }`}
                 />
                 {errors.employees && (
-                  <span className="text-red-500 text-sm mt-1 block">{errors.employees}</span>
+                  <span className="text-red-500 text-sm mt-1 block">
+                    {errors.employees}
+                  </span>
                 )}
               </div>
 
@@ -160,11 +160,15 @@ const HeroSection = () => {
                   onChange={handleChange}
                   placeholder="Ex: 25.39-0-00"
                   className={`w-full px-4 py-3 border-2 rounded-lg focus:ring-2 focus:ring-primary-500 outline-none transition ${
-                    errors.cnae ? 'border-red-500' : 'border-gray-300 focus:border-primary-500'
+                    errors.cnae
+                      ? "border-red-500"
+                      : "border-gray-300 focus:border-primary-500"
                   }`}
                 />
                 {errors.cnae && (
-                  <span className="text-red-500 text-sm mt-1 block">{errors.cnae}</span>
+                  <span className="text-red-500 text-sm mt-1 block">
+                    {errors.cnae}
+                  </span>
                 )}
               </div>
 
@@ -198,11 +202,15 @@ const HeroSection = () => {
                   onChange={handleChange}
                   placeholder="Ex: 3"
                   className={`w-full px-4 py-3 border-2 rounded-lg focus:ring-2 focus:ring-primary-500 outline-none transition ${
-                    errors.units ? 'border-red-500' : 'border-gray-300 focus:border-primary-500'
+                    errors.units
+                      ? "border-red-500"
+                      : "border-gray-300 focus:border-primary-500"
                   }`}
                 />
                 {errors.units && (
-                  <span className="text-red-500 text-sm mt-1 block">{errors.units}</span>
+                  <span className="text-red-500 text-sm mt-1 block">
+                    {errors.units}
+                  </span>
                 )}
               </div>
 
@@ -241,6 +249,5 @@ const HeroSection = () => {
     </section>
   );
 };
-
 
 export default HeroSection;
