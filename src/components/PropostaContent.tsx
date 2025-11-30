@@ -22,7 +22,7 @@ const PropostaContent = ({
   const numUnits = 3;
   const monthlyInvestment = Math.round(numEmployees * 95.67 + numUnits * 500);
   const investimentoMin = monthlyInvestment * 0.8;
-  const investimentoMax = monthlyInvestment * 1.2;
+  // const investimentoMax = monthlyInvestment * 1.2;
 
   // NRs aplicáveis
   const nrsAplicaveis = [

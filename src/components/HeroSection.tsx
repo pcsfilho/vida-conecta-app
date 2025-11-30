@@ -7,7 +7,7 @@ const HeroSection = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     employees: 56,
-    cnae: "CANAE",
+    cnae: "25.39.0.0",
     units: 2,
     maturity: "initial",
   });

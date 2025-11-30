@@ -114,7 +114,7 @@ const Proposta = () => {
 
   // Investimento estimado
   const investimentoMin = monthlyInvestment * 0.8;
-  const investimentoMax = monthlyInvestment * 1.2;
+  // const investimentoMax = monthlyInvestment * 1.2;
 
   if (loading) {
     return (
