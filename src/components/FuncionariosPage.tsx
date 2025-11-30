@@ -1,5 +1,14 @@
-import { useState } from 'react';
-import { Plus, Edit, Trash2, Eye, X, UserCheck, UserX, Users } from 'lucide-react';
+import { useState } from "react";
+import {
+  Plus,
+  Edit,
+  Trash2,
+  Eye,
+  X,
+  UserCheck,
+  UserX,
+  Users,
+} from "lucide-react";
 
 interface Funcionario {
   id: number;
@@ -9,7 +18,7 @@ interface Funcionario {
   cargo: string;
   dataNascimento: string;
   sexo: string;
-  situacao: 'Ativo' | 'Inativo';
+  situacao: "Ativo" | "Inativo";
   dataAdmissao: string;
   cpf: string;
 }
@@ -18,65 +27,84 @@ const FuncionariosPage = () => {
   const [funcionarios, setFuncionarios] = useState<Funcionario[]>([
     {
       id: 1,
-      nome: 'João Silva Santos',
-      unidade: 'Matriz - São Paulo',
-      setor: 'Produção',
-      cargo: 'Operador de Máquinas',
-      dataNascimento: '1985-03-15',
-      sexo: 'Masculino',
-      situacao: 'Ativo',
-      dataAdmissao: '2020-01-10',
-      cpf: '123.456.789-00'
+      nome: "João Silva Santos",
+      unidade: "Matriz - São Paulo",
+      setor: "Produção",
+      cargo: "Operador de Máquinas",
+      dataNascimento: "1985-03-15",
+      sexo: "Masculino",
+      situacao: "Ativo",
+      dataAdmissao: "2020-01-10",
+      cpf: "123.456.789-00",
     },
     {
       id: 2,
-      nome: 'Maria Oliveira Costa',
-      unidade: 'Filial - Rio de Janeiro',
-      setor: 'Administrativo',
-      cargo: 'Assistente Administrativo',
-      dataNascimento: '1990-07-22',
-      sexo: 'Feminino',
-      situacao: 'Ativo',
-      dataAdmissao: '2019-05-15',
-      cpf: '987.654.321-00'
+      nome: "Maria Oliveira Costa",
+      unidade: "Filial - Rio de Janeiro",
+      setor: "Administrativo",
+      cargo: "Assistente Administrativo",
+      dataNascimento: "1990-07-22",
+      sexo: "Feminino",
+      situacao: "Ativo",
+      dataAdmissao: "2019-05-15",
+      cpf: "987.654.321-00",
     },
     {
       id: 3,
-      nome: 'Pedro Almeida Souza',
-      unidade: 'Matriz - São Paulo',
-      setor: 'Manutenção',
-      cargo: 'Técnico de Manutenção',
-      dataNascimento: '1988-11-08',
-      sexo: 'Masculino',
-      situacao: 'Inativo',
-      dataAdmissao: '2018-09-20',
-      cpf: '456.789.123-00'
-    }
+      nome: "Pedro Almeida Souza",
+      unidade: "Matriz - São Paulo",
+      setor: "Manutenção",
+      cargo: "Técnico de Manutenção",
+      dataNascimento: "1988-11-08",
+      sexo: "Masculino",
+      situacao: "Inativo",
+      dataAdmissao: "2018-09-20",
+      cpf: "456.789.123-00",
+    },
   ]);
 
   const [modalOpen, setModalOpen] = useState(false);
   const [detailModalOpen, setDetailModalOpen] = useState(false);
-  const [currentFuncionario, setCurrentFuncionario] = useState<Funcionario | null>(null);
+  const [currentFuncionario, setCurrentFuncionario] =
+    useState<Funcionario | null>(null);
   const [isEditing, setIsEditing] = useState(false);
 
-  const [formData, setFormData] = useState<Omit<Funcionario, 'id'>>({
-    nome: '',
-    unidade: '',
-    setor: '',
-    cargo: '',
-    dataNascimento: '',
-    sexo: '',
-    situacao: 'Ativo',
-    dataAdmissao: '',
-    cpf: ''
+  const [formData, setFormData] = useState<Omit<Funcionario, "id">>({
+    nome: "",
+    unidade: "",
+    setor: "",
+    cargo: "",
+    dataNascimento: "",
+    sexo: "",
+    situacao: "Ativo",
+    dataAdmissao: "",
+    cpf: "",
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   // Dados fake para os selects
-  const unidades = ['Matriz - São Paulo', 'Filial - Rio de Janeiro', 'Filial - Belo Horizonte', 'Filial - Curitiba'];
-  const setores = ['Produção', 'Administrativo', 'Manutenção', 'Qualidade', 'Logística', 'RH'];
-  const cargos = ['Operador de Máquinas', 'Assistente Administrativo', 'Técnico de Manutenção', 'Analista de Qualidade', 'Supervisor'];
+  const unidades = [
+    "Matriz - São Paulo",
+    "Filial - Rio de Janeiro",
+    "Filial - Belo Horizonte",
+    "Filial - Curitiba",
+  ];
+  const setores = [
+    "Produção",
+    "Administrativo",
+    "Manutenção",
+    "Qualidade",
+    "Logística",
+    "RH",
+  ];
+  const cargos = [
+    "Operador de Máquinas",
+    "Assistente Administrativo",
+    "Técnico de Manutenção",
+    "Analista de Qualidade",
+    "Supervisor",
+  ];
 
   const handleOpenModal = (funcionario?: Funcionario) => {
     if (funcionario) {
@@ -91,21 +119,21 @@ const FuncionariosPage = () => {
         sexo: funcionario.sexo,
         situacao: funcionario.situacao,
         dataAdmissao: funcionario.dataAdmissao,
-        cpf: funcionario.cpf
+        cpf: funcionario.cpf,
       });
     } else {
       setIsEditing(false);
       setCurrentFuncionario(null);
       setFormData({
-        nome: '',
-        unidade: '',
-        setor: '',
-        cargo: '',
-        dataNascimento: '',
-        sexo: '',
-        situacao: 'Ativo',
-        dataAdmissao: '',
-        cpf: ''
+        nome: "",
+        unidade: "",
+        setor: "",
+        cargo: "",
+        dataNascimento: "",
+        sexo: "",
+        situacao: "Ativo",
+        dataAdmissao: "",
+        cpf: "",
       });
     }
     setErrors({});
@@ -116,39 +144,43 @@ const FuncionariosPage = () => {
     setModalOpen(false);
     setCurrentFuncionario(null);
     setFormData({
-      nome: '',
-      unidade: '',
-      setor: '',
-      cargo: '',
-      dataNascimento: '',
-      sexo: '',
-      situacao: 'Ativo',
-      dataAdmissao: '',
-      cpf: ''
+      nome: "",
+      unidade: "",
+      setor: "",
+      cargo: "",
+      dataNascimento: "",
+      sexo: "",
+      situacao: "Ativo",
+      dataAdmissao: "",
+      cpf: "",
     });
     setErrors({});
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
     if (errors[name]) {
-      setErrors({ ...errors, [name]: '' });
+      setErrors({ ...errors, [name]: "" });
     }
   };
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
 
-    if (!formData.nome) newErrors.nome = 'Nome é obrigatório';
-    if (!formData.unidade) newErrors.unidade = 'Unidade é obrigatória';
-    if (!formData.setor) newErrors.setor = 'Setor é obrigatório';
-    if (!formData.cargo) newErrors.cargo = 'Cargo é obrigatório';
-    if (!formData.dataNascimento) newErrors.dataNascimento = 'Data de nascimento é obrigatória';
-    if (!formData.sexo) newErrors.sexo = 'Sexo é obrigatório';
-    if (!formData.situacao) newErrors.situacao = 'Situação é obrigatória';
-    if (!formData.dataAdmissao) newErrors.dataAdmissao = 'Data de admissão é obrigatória';
-    if (!formData.cpf) newErrors.cpf = 'CPF é obrigatório';
+    if (!formData.nome) newErrors.nome = "Nome é obrigatório";
+    if (!formData.unidade) newErrors.unidade = "Unidade é obrigatória";
+    if (!formData.setor) newErrors.setor = "Setor é obrigatório";
+    if (!formData.cargo) newErrors.cargo = "Cargo é obrigatório";
+    if (!formData.dataNascimento)
+      newErrors.dataNascimento = "Data de nascimento é obrigatória";
+    if (!formData.sexo) newErrors.sexo = "Sexo é obrigatório";
+    if (!formData.situacao) newErrors.situacao = "Situação é obrigatória";
+    if (!formData.dataAdmissao)
+      newErrors.dataAdmissao = "Data de admissão é obrigatória";
+    if (!formData.cpf) newErrors.cpf = "CPF é obrigatório";
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -160,11 +192,15 @@ const FuncionariosPage = () => {
     if (!validateForm()) return;
 
     if (isEditing && currentFuncionario) {
-      setFuncionarios(funcionarios.map(f =>
-        f.id === currentFuncionario.id ? { ...formData, id: currentFuncionario.id } : f
-      ));
+      setFuncionarios(
+        funcionarios.map((f) =>
+          f.id === currentFuncionario.id
+            ? { ...formData, id: currentFuncionario.id }
+            : f
+        )
+      );
     } else {
-      const newId = Math.max(...funcionarios.map(f => f.id), 0) + 1;
+      const newId = Math.max(...funcionarios.map((f) => f.id), 0) + 1;
       setFuncionarios([...funcionarios, { ...formData, id: newId }]);
     }
 
@@ -172,17 +208,19 @@ const FuncionariosPage = () => {
   };
 
   const handleDelete = (id: number) => {
-    if (window.confirm('Tem certeza que deseja excluir este funcionário?')) {
-      setFuncionarios(funcionarios.filter(f => f.id !== id));
+    if (window.confirm("Tem certeza que deseja excluir este funcionário?")) {
+      setFuncionarios(funcionarios.filter((f) => f.id !== id));
     }
   };
 
   const handleToggleSituacao = (funcionario: Funcionario) => {
-    setFuncionarios(funcionarios.map(f =>
-      f.id === funcionario.id
-        ? { ...f, situacao: f.situacao === 'Ativo' ? 'Inativo' : 'Ativo' }
-        : f
-    ));
+    setFuncionarios(
+      funcionarios.map((f) =>
+        f.id === funcionario.id
+          ? { ...f, situacao: f.situacao === "Ativo" ? "Inativo" : "Ativo" }
+          : f
+      )
+    );
   };
 
   const handleViewDetails = (funcionario: Funcionario) => {
@@ -192,7 +230,7 @@ const FuncionariosPage = () => {
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString('pt-BR');
+    return date.toLocaleDateString("pt-BR");
   };
 
   return (
@@ -201,8 +239,17 @@ const FuncionariosPage = () => {
       <div className="flex items-center justify-between mb-8">
         <div>
           <h1 className="text-3xl font-bold text-gray-900">Funcionários</h1>
-          <p className="text-gray-600 mt-1">Gerencie os funcionários da sua empresa</p>
+          <p className="text-gray-600 mt-1">
+            Gerencie os funcionários da sua empresa
+          </p>
         </div>
+        <button
+          onClick={() => handleOpenModal()}
+          className="bg-primary-500 hover:bg-primary-600 text-white px-6 py-3 rounded-lg font-semibold flex items-center space-x-1 transition-colors"
+        >
+          <Plus className="w-5 h-5" />
+          <span>Gerar M1</span>
+        </button>
         <button
           onClick={() => handleOpenModal()}
           className="bg-primary-500 hover:bg-primary-600 text-white px-6 py-3 rounded-lg font-semibold flex items-center space-x-2 transition-colors"
@@ -219,7 +266,7 @@ const FuncionariosPage = () => {
             <div>
               <p className="text-sm text-gray-600 mb-1">Funcionários Ativos</p>
               <p className="text-3xl font-bold text-gray-900">
-                {funcionarios.filter(f => f.situacao === 'Ativo').length}
+                {funcionarios.filter((f) => f.situacao === "Ativo").length}
               </p>
             </div>
             <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
@@ -231,9 +278,11 @@ const FuncionariosPage = () => {
         <div className="bg-white rounded-xl shadow-md p-6 border-l-4 border-red-500">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-gray-600 mb-1">Funcionários Inativos</p>
+              <p className="text-sm text-gray-600 mb-1">
+                Funcionários Inativos
+              </p>
               <p className="text-3xl font-bold text-gray-900">
-                {funcionarios.filter(f => f.situacao === 'Inativo').length}
+                {funcionarios.filter((f) => f.situacao === "Inativo").length}
               </p>
             </div>
             <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
@@ -245,8 +294,12 @@ const FuncionariosPage = () => {
         <div className="bg-white rounded-xl shadow-md p-6 border-l-4 border-blue-500">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-gray-600 mb-1">Total de Funcionários</p>
-              <p className="text-3xl font-bold text-gray-900">{funcionarios.length}</p>
+              <p className="text-sm text-gray-600 mb-1">
+                Total de Funcionários
+              </p>
+              <p className="text-3xl font-bold text-gray-900">
+                {funcionarios.length}
+              </p>
             </div>
             <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
               <Users className="w-6 h-6 text-blue-600" />
@@ -283,20 +336,33 @@ const FuncionariosPage = () => {
             </thead>
             <tbody className="divide-y divide-gray-200">
               {funcionarios.map((funcionario) => (
-                <tr key={funcionario.id} className="hover:bg-gray-50 transition-colors">
+                <tr
+                  key={funcionario.id}
+                  className="hover:bg-gray-50 transition-colors"
+                >
                   <td className="px-6 py-4">
-                    <div className="font-medium text-gray-900">{funcionario.nome}</div>
-                    <div className="text-sm text-gray-500">{funcionario.cpf}</div>
+                    <div className="font-medium text-gray-900">
+                      {funcionario.nome}
+                    </div>
+                    <div className="text-sm text-gray-500">
+                      {funcionario.cpf}
+                    </div>
                   </td>
-                  <td className="px-6 py-4 text-sm text-gray-700">{funcionario.unidade}</td>
-                  <td className="px-6 py-4 text-sm text-gray-700">{funcionario.setor}</td>
-                  <td className="px-6 py-4 text-sm text-gray-700">{funcionario.cargo}</td>
+                  <td className="px-6 py-4 text-sm text-gray-700">
+                    {funcionario.unidade}
+                  </td>
+                  <td className="px-6 py-4 text-sm text-gray-700">
+                    {funcionario.setor}
+                  </td>
+                  <td className="px-6 py-4 text-sm text-gray-700">
+                    {funcionario.cargo}
+                  </td>
                   <td className="px-6 py-4">
                     <span
                       className={`inline-flex px-3 py-1 text-xs font-semibold rounded-full ${
-                        funcionario.situacao === 'Ativo'
-                          ? 'bg-green-100 text-green-800'
-                          : 'bg-red-100 text-red-800'
+                        funcionario.situacao === "Ativo"
+                          ? "bg-green-100 text-green-800"
+                          : "bg-red-100 text-red-800"
                       }`}
                     >
                       {funcionario.situacao}
@@ -321,13 +387,17 @@ const FuncionariosPage = () => {
                       <button
                         onClick={() => handleToggleSituacao(funcionario)}
                         className={`p-2 rounded-lg transition-colors ${
-                          funcionario.situacao === 'Ativo'
-                            ? 'text-orange-600 hover:bg-orange-50'
-                            : 'text-green-600 hover:bg-green-50'
+                          funcionario.situacao === "Ativo"
+                            ? "text-orange-600 hover:bg-orange-50"
+                            : "text-green-600 hover:bg-green-50"
                         }`}
-                        title={funcionario.situacao === 'Ativo' ? 'Inativar' : 'Ativar'}
+                        title={
+                          funcionario.situacao === "Ativo"
+                            ? "Inativar"
+                            : "Ativar"
+                        }
                       >
-                        {funcionario.situacao === 'Ativo' ? (
+                        {funcionario.situacao === "Ativo" ? (
                           <UserX className="w-4 h-4" />
                         ) : (
                           <UserCheck className="w-4 h-4" />
@@ -355,7 +425,7 @@ const FuncionariosPage = () => {
           <div className="bg-white rounded-2xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto">
             <div className="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
               <h2 className="text-2xl font-bold text-gray-900">
-                {isEditing ? 'Editar Funcionário' : 'Novo Funcionário'}
+                {isEditing ? "Editar Funcionário" : "Novo Funcionário"}
               </h2>
               <button
                 onClick={handleCloseModal}
@@ -378,11 +448,17 @@ const FuncionariosPage = () => {
                     value={formData.nome}
                     onChange={handleChange}
                     className={`w-full px-4 py-3 border-2 rounded-lg focus:ring-2 focus:ring-primary-500 outline-none transition ${
-                      errors.nome ? 'border-red-500' : 'border-gray-300 focus:border-primary-500'
+                      errors.nome
+                        ? "border-red-500"
+                        : "border-gray-300 focus:border-primary-500"
                     }`}
                     placeholder="Ex: João Silva Santos"
                   />
-                  {errors.nome && <span className="text-red-500 text-sm mt-1 block">{errors.nome}</span>}
+                  {errors.nome && (
+                    <span className="text-red-500 text-sm mt-1 block">
+                      {errors.nome}
+                    </span>
+                  )}
                 </div>
 
                 {/* Unidade */}
@@ -395,7 +471,9 @@ const FuncionariosPage = () => {
                     value={formData.unidade}
                     onChange={handleChange}
                     className={`w-full px-4 py-3 border-2 rounded-lg focus:ring-2 focus:ring-primary-500 outline-none transition bg-white ${
-                      errors.unidade ? 'border-red-500' : 'border-gray-300 focus:border-primary-500'
+                      errors.unidade
+                        ? "border-red-500"
+                        : "border-gray-300 focus:border-primary-500"
                     }`}
                   >
                     <option value="">Selecione...</option>
@@ -405,7 +483,11 @@ const FuncionariosPage = () => {
                       </option>
                     ))}
                   </select>
-                  {errors.unidade && <span className="text-red-500 text-sm mt-1 block">{errors.unidade}</span>}
+                  {errors.unidade && (
+                    <span className="text-red-500 text-sm mt-1 block">
+                      {errors.unidade}
+                    </span>
+                  )}
                 </div>
 
                 {/* Setor */}
@@ -418,7 +500,9 @@ const FuncionariosPage = () => {
                     value={formData.setor}
                     onChange={handleChange}
                     className={`w-full px-4 py-3 border-2 rounded-lg focus:ring-2 focus:ring-primary-500 outline-none transition bg-white ${
-                      errors.setor ? 'border-red-500' : 'border-gray-300 focus:border-primary-500'
+                      errors.setor
+                        ? "border-red-500"
+                        : "border-gray-300 focus:border-primary-500"
                     }`}
                   >
                     <option value="">Selecione...</option>
@@ -428,7 +512,11 @@ const FuncionariosPage = () => {
                       </option>
                     ))}
                   </select>
-                  {errors.setor && <span className="text-red-500 text-sm mt-1 block">{errors.setor}</span>}
+                  {errors.setor && (
+                    <span className="text-red-500 text-sm mt-1 block">
+                      {errors.setor}
+                    </span>
+                  )}
                 </div>
 
                 {/* Cargo */}
@@ -441,7 +529,9 @@ const FuncionariosPage = () => {
                     value={formData.cargo}
                     onChange={handleChange}
                     className={`w-full px-4 py-3 border-2 rounded-lg focus:ring-2 focus:ring-primary-500 outline-none transition bg-white ${
-                      errors.cargo ? 'border-red-500' : 'border-gray-300 focus:border-primary-500'
+                      errors.cargo
+                        ? "border-red-500"
+                        : "border-gray-300 focus:border-primary-500"
                     }`}
                   >
                     <option value="">Selecione...</option>
@@ -451,7 +541,11 @@ const FuncionariosPage = () => {
                       </option>
                     ))}
                   </select>
-                  {errors.cargo && <span className="text-red-500 text-sm mt-1 block">{errors.cargo}</span>}
+                  {errors.cargo && (
+                    <span className="text-red-500 text-sm mt-1 block">
+                      {errors.cargo}
+                    </span>
+                  )}
                 </div>
 
                 {/* CPF */}
@@ -465,11 +559,17 @@ const FuncionariosPage = () => {
                     value={formData.cpf}
                     onChange={handleChange}
                     className={`w-full px-4 py-3 border-2 rounded-lg focus:ring-2 focus:ring-primary-500 outline-none transition ${
-                      errors.cpf ? 'border-red-500' : 'border-gray-300 focus:border-primary-500'
+                      errors.cpf
+                        ? "border-red-500"
+                        : "border-gray-300 focus:border-primary-500"
                     }`}
                     placeholder="000.000.000-00"
                   />
-                  {errors.cpf && <span className="text-red-500 text-sm mt-1 block">{errors.cpf}</span>}
+                  {errors.cpf && (
+                    <span className="text-red-500 text-sm mt-1 block">
+                      {errors.cpf}
+                    </span>
+                  )}
                 </div>
 
                 {/* Data de Nascimento */}
@@ -483,10 +583,16 @@ const FuncionariosPage = () => {
                     value={formData.dataNascimento}
                     onChange={handleChange}
                     className={`w-full px-4 py-3 border-2 rounded-lg focus:ring-2 focus:ring-primary-500 outline-none transition ${
-                      errors.dataNascimento ? 'border-red-500' : 'border-gray-300 focus:border-primary-500'
+                      errors.dataNascimento
+                        ? "border-red-500"
+                        : "border-gray-300 focus:border-primary-500"
                     }`}
                   />
-                  {errors.dataNascimento && <span className="text-red-500 text-sm mt-1 block">{errors.dataNascimento}</span>}
+                  {errors.dataNascimento && (
+                    <span className="text-red-500 text-sm mt-1 block">
+                      {errors.dataNascimento}
+                    </span>
+                  )}
                 </div>
 
                 {/* Sexo */}
@@ -499,14 +605,20 @@ const FuncionariosPage = () => {
                     value={formData.sexo}
                     onChange={handleChange}
                     className={`w-full px-4 py-3 border-2 rounded-lg focus:ring-2 focus:ring-primary-500 outline-none transition bg-white ${
-                      errors.sexo ? 'border-red-500' : 'border-gray-300 focus:border-primary-500'
+                      errors.sexo
+                        ? "border-red-500"
+                        : "border-gray-300 focus:border-primary-500"
                     }`}
                   >
                     <option value="">Selecione...</option>
                     <option value="Masculino">Masculino</option>
                     <option value="Feminino">Feminino</option>
                   </select>
-                  {errors.sexo && <span className="text-red-500 text-sm mt-1 block">{errors.sexo}</span>}
+                  {errors.sexo && (
+                    <span className="text-red-500 text-sm mt-1 block">
+                      {errors.sexo}
+                    </span>
+                  )}
                 </div>
 
                 {/* Data de Admissão */}
@@ -520,10 +632,16 @@ const FuncionariosPage = () => {
                     value={formData.dataAdmissao}
                     onChange={handleChange}
                     className={`w-full px-4 py-3 border-2 rounded-lg focus:ring-2 focus:ring-primary-500 outline-none transition ${
-                      errors.dataAdmissao ? 'border-red-500' : 'border-gray-300 focus:border-primary-500'
+                      errors.dataAdmissao
+                        ? "border-red-500"
+                        : "border-gray-300 focus:border-primary-500"
                     }`}
                   />
-                  {errors.dataAdmissao && <span className="text-red-500 text-sm mt-1 block">{errors.dataAdmissao}</span>}
+                  {errors.dataAdmissao && (
+                    <span className="text-red-500 text-sm mt-1 block">
+                      {errors.dataAdmissao}
+                    </span>
+                  )}
                 </div>
 
                 {/* Situação */}
@@ -536,13 +654,19 @@ const FuncionariosPage = () => {
                     value={formData.situacao}
                     onChange={handleChange}
                     className={`w-full px-4 py-3 border-2 rounded-lg focus:ring-2 focus:ring-primary-500 outline-none transition bg-white ${
-                      errors.situacao ? 'border-red-500' : 'border-gray-300 focus:border-primary-500'
+                      errors.situacao
+                        ? "border-red-500"
+                        : "border-gray-300 focus:border-primary-500"
                     }`}
                   >
                     <option value="Ativo">Ativo</option>
                     <option value="Inativo">Inativo</option>
                   </select>
-                  {errors.situacao && <span className="text-red-500 text-sm mt-1 block">{errors.situacao}</span>}
+                  {errors.situacao && (
+                    <span className="text-red-500 text-sm mt-1 block">
+                      {errors.situacao}
+                    </span>
+                  )}
                 </div>
               </div>
 
@@ -559,7 +683,7 @@ const FuncionariosPage = () => {
                   type="submit"
                   className="px-6 py-3 bg-primary-500 hover:bg-primary-600 text-white rounded-lg font-semibold transition-colors"
                 >
-                  {isEditing ? 'Salvar Alterações' : 'Cadastrar Funcionário'}
+                  {isEditing ? "Salvar Alterações" : "Cadastrar Funcionário"}
                 </button>
               </div>
             </form>
@@ -572,7 +696,9 @@ const FuncionariosPage = () => {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full">
             <div className="border-b border-gray-200 px-6 py-4 flex items-center justify-between">
-              <h2 className="text-2xl font-bold text-gray-900">Detalhes do Funcionário</h2>
+              <h2 className="text-2xl font-bold text-gray-900">
+                Detalhes do Funcionário
+              </h2>
               <button
                 onClick={() => setDetailModalOpen(false)}
                 className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
@@ -585,43 +711,61 @@ const FuncionariosPage = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <p className="text-sm text-gray-600 mb-1">Nome Completo</p>
-                  <p className="text-base font-semibold text-gray-900">{currentFuncionario.nome}</p>
+                  <p className="text-base font-semibold text-gray-900">
+                    {currentFuncionario.nome}
+                  </p>
                 </div>
                 <div>
                   <p className="text-sm text-gray-600 mb-1">CPF</p>
-                  <p className="text-base font-semibold text-gray-900">{currentFuncionario.cpf}</p>
+                  <p className="text-base font-semibold text-gray-900">
+                    {currentFuncionario.cpf}
+                  </p>
                 </div>
                 <div>
                   <p className="text-sm text-gray-600 mb-1">Unidade</p>
-                  <p className="text-base font-semibold text-gray-900">{currentFuncionario.unidade}</p>
+                  <p className="text-base font-semibold text-gray-900">
+                    {currentFuncionario.unidade}
+                  </p>
                 </div>
                 <div>
                   <p className="text-sm text-gray-600 mb-1">Setor</p>
-                  <p className="text-base font-semibold text-gray-900">{currentFuncionario.setor}</p>
+                  <p className="text-base font-semibold text-gray-900">
+                    {currentFuncionario.setor}
+                  </p>
                 </div>
                 <div>
                   <p className="text-sm text-gray-600 mb-1">Cargo</p>
-                  <p className="text-base font-semibold text-gray-900">{currentFuncionario.cargo}</p>
+                  <p className="text-base font-semibold text-gray-900">
+                    {currentFuncionario.cargo}
+                  </p>
                 </div>
                 <div>
                   <p className="text-sm text-gray-600 mb-1">Sexo</p>
-                  <p className="text-base font-semibold text-gray-900">{currentFuncionario.sexo}</p>
+                  <p className="text-base font-semibold text-gray-900">
+                    {currentFuncionario.sexo}
+                  </p>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-600 mb-1">Data de Nascimento</p>
-                  <p className="text-base font-semibold text-gray-900">{formatDate(currentFuncionario.dataNascimento)}</p>
+                  <p className="text-sm text-gray-600 mb-1">
+                    Data de Nascimento
+                  </p>
+                  <p className="text-base font-semibold text-gray-900">
+                    {formatDate(currentFuncionario.dataNascimento)}
+                  </p>
                 </div>
                 <div>
                   <p className="text-sm text-gray-600 mb-1">Data de Admissão</p>
-                  <p className="text-base font-semibold text-gray-900">{formatDate(currentFuncionario.dataAdmissao)}</p>
+                  <p className="text-base font-semibold text-gray-900">
+                    {formatDate(currentFuncionario.dataAdmissao)}
+                  </p>
                 </div>
                 <div>
                   <p className="text-sm text-gray-600 mb-1">Situação</p>
                   <span
                     className={`inline-flex px-3 py-1 text-sm font-semibold rounded-full ${
-                      currentFuncionario.situacao === 'Ativo'
-                        ? 'bg-green-100 text-green-800'
-                        : 'bg-red-100 text-red-800'
+                      currentFuncionario.situacao === "Ativo"
+                        ? "bg-green-100 text-green-800"
+                        : "bg-red-100 text-red-800"
                     }`}
                   >
                     {currentFuncionario.situacao}
