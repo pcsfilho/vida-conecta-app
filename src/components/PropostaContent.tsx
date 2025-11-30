@@ -117,12 +117,10 @@ const PropostaContent = ({
                 R$ {investimentoMin.toLocaleString("pt-BR")}
               </p>
             </div>
-            <div className="text-right">
-              {/* <p className="text-gray-600">Implementação única</p> */}
-              <p className="font-bold text-gray-900">
-                R$ {investimentoMax.toLocaleString("pt-BR")}
-              </p>
-            </div>
+            {/* <div className="text-right">
+              <p className="text-gray-600">Implementação única</p>
+              <p className="font-bold text-gray-900">R$ {investimentoMax.toLocaleString('pt-BR')}</p>
+            </div> */}
           </div>
           <p className="text-xs text-gray-500 mt-2 text-center">
             *Valores estimados baseados no porte da empresa. Investimento final
