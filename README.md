@@ -56,6 +56,12 @@ vida-conecta-app/
 - [Seu framework/biblioteca principal]
 - [Dependências importantes]
 
-## 📄 Licença
+## 📄 Rotas Importante
 
-[Sua licença aqui]
+- / => SESI SAÚDE
+- /orcamento => Orçamento simplificado para cliente
+- /proposta => Visualização de Proposta de Orçamento
+- /dashboard => Área do cliente
+- /admin/dashboard => Área Gerencial SESI
+- admin/proposta/:id => Detalhes da Proposta por cliente na Área Gerencial SESI
+- /cadastro => Cadastro de Funcionários

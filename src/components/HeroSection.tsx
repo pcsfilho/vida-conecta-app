@@ -6,9 +6,9 @@ import vivaLogo from "../assets/viva+.png";
 const HeroSection = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    employees: 10,
+    employees: 56,
     cnae: "CANAE",
-    units: 10,
+    units: 2,
     maturity: "initial",
   });
 
