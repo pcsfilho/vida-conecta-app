@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Home,
   Users,
@@ -32,6 +33,7 @@ interface Proposta {
 }
 
 const AdminDashboard = () => {
+  const navigate = useNavigate();
   const [activeMenu, setActiveMenu] = useState("dashboard");
   const [searchTerm, setSearchTerm] = useState("");
   const [draggedItem, setDraggedItem] = useState<string | null>(null);
@@ -367,7 +369,8 @@ const AdminDashboard = () => {
                         draggable
                         onDragStart={(e) => handleDragStart(e, proposta.id)}
                         onDragEnd={handleDragEnd}
-                        className={`bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow cursor-move border border-gray-200 ${
+                        onClick={() => navigate(`/admin/proposta/${proposta.id}`)}
+                        className={`bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow cursor-pointer border border-gray-200 ${
                           draggedItem === proposta.id ? "opacity-50" : ""
                         }`}
                       >

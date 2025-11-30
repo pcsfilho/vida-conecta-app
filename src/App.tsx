@@ -6,6 +6,7 @@ import Proposta from './pages/Proposta';
 import Cadastro from './pages/Cadastro';
 import Dashboard from './pages/Dashboard';
 import AdminDashboard from './pages/AdminDashboard';
+import PropostaDetalhes from './pages/PropostaDetalhes';
 
 function App() {
   return (
@@ -43,6 +44,9 @@ function App() {
 
           {/* Rota do Dashboard Administrativo */}
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
+
+          {/* Rota de Detalhes da Proposta */}
+          <Route path="/admin/proposta/:id" element={<PropostaDetalhes />} />
         </Routes>
       </div>
     </Router>
