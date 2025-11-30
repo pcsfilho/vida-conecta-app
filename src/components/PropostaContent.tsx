@@ -21,7 +21,7 @@ const PropostaContent = ({
   const numEmployees = 150;
   const numUnits = 3;
   const monthlyInvestment = Math.round(numEmployees * 95.67 + numUnits * 500);
-  const investimentoMin = monthlyInvestment * 0.8;
+  // const investimentoMin = monthlyInvestment * 0.8;
   // const investimentoMax = monthlyInvestment * 1.2;
 
   // NRs aplicáveis
@@ -111,12 +111,12 @@ const PropostaContent = ({
         {/* Investment Range */}
         <div className="bg-gray-50 rounded-lg p-4 mt-6">
           <div className="flex justify-between items-center text-sm">
-            <div>
+            {/* <div>
               <p className="text-gray-600">Valor mensal</p>
               <p className="font-bold text-gray-900">
                 R$ {investimentoMin.toLocaleString("pt-BR")}
               </p>
-            </div>
+            </div> */}
             {/* <div className="text-right">
               <p className="text-gray-600">Implementação única</p>
               <p className="font-bold text-gray-900">R$ {investimentoMax.toLocaleString('pt-BR')}</p>
