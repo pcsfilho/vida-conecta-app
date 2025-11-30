@@ -361,7 +361,7 @@ const PropostaDetalhes = () => {
                       </span>
                     </div>
 
-                    {checklistItems.map((item, index) => (
+                    {checklistItems.map((item) => (
                       <div
                         key={item.id}
                         className="border border-gray-200 rounded-lg p-5 hover:shadow-md transition-shadow"
