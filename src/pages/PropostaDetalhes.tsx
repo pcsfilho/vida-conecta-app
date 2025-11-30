@@ -2,7 +2,6 @@ import { useParams, useNavigate } from "react-router-dom";
 import {
   ArrowLeft,
   Calendar,
-  Building2,
   Users,
   CheckCircle,
   Clock,
@@ -264,9 +263,7 @@ const PropostaDetalhes = () => {
                   <h2 className="text-2xl font-bold text-gray-900 mb-1">
                     {proposta.nomeEmpresa}
                   </h2>
-                  <p className="text-sm text-gray-500">
-                    {proposta.cnpj}
-                  </p>
+                  <p className="text-sm text-gray-500">{proposta.cnpj}</p>
                 </div>
                 <div className="flex items-center space-x-2">
                   <span
@@ -298,8 +295,9 @@ const PropostaDetalhes = () => {
                 </p>
                 <p className="text-sm text-gray-600 leading-relaxed">
                   Realizar medições de ruído em todos os setores produtivos da
-                  empresa para avaliar a conformidade com os limites estabelecidos
-                  pela NR-15 e identificar necessidades de controle.
+                  empresa para avaliar a conformidade com os limites
+                  estabelecidos pela NR-15 e identificar necessidades de
+                  controle.
                 </p>
               </div>
 
@@ -358,7 +356,9 @@ const PropostaDetalhes = () => {
                       <h3 className="text-lg font-bold text-gray-900">
                         Checklist de Riscos Físicos, Químicos e Perigosos
                       </h3>
-                      <span className="text-sm text-gray-500">Aba: 24/18/2025</span>
+                      <span className="text-sm text-gray-500">
+                        Aba: 24/18/2025
+                      </span>
                     </div>
 
                     {checklistItems.map((item, index) => (
@@ -436,7 +436,8 @@ const PropostaDetalhes = () => {
                         Assinatura do Técnico
                       </h4>
                       <p className="text-sm text-gray-600 mb-3">
-                        Digite seu nome completo e registre profissional (CREA 123456/90):
+                        Digite seu nome completo e registre profissional (CREA
+                        123456/90):
                       </p>
                       <input
                         type="text"
@@ -450,7 +451,9 @@ const PropostaDetalhes = () => {
                 {activeTab === "documentos" && (
                   <div className="text-center py-12">
                     <FileText className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-                    <p className="text-gray-500">Nenhum documento anexado ainda</p>
+                    <p className="text-gray-500">
+                      Nenhum documento anexado ainda
+                    </p>
                     <button className="mt-4 px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors">
                       Adicionar Documento
                     </button>
@@ -471,7 +474,10 @@ const PropostaDetalhes = () => {
                   <span className="text-sm font-semibold">0%</span>
                 </div>
                 <div className="w-full bg-gray-200 rounded-full h-2">
-                  <div className="bg-primary-600 h-2 rounded-full" style={{ width: "0%" }}></div>
+                  <div
+                    className="bg-primary-600 h-2 rounded-full"
+                    style={{ width: "0%" }}
+                  ></div>
                 </div>
               </div>
 
@@ -492,7 +498,9 @@ const PropostaDetalhes = () => {
 
             {/* Checklist Resumo */}
             <div className="bg-white rounded-xl shadow-sm p-6">
-              <h3 className="text-sm font-bold text-gray-900 mb-4">Checklist</h3>
+              <h3 className="text-sm font-bold text-gray-900 mb-4">
+                Checklist
+              </h3>
               <div className="space-y-2">
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-gray-600">Status</span>
