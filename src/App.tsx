@@ -5,6 +5,7 @@ import ParaEmpresas from './pages/ParaEmpresas';
 import Proposta from './pages/Proposta';
 import Cadastro from './pages/Cadastro';
 import Dashboard from './pages/Dashboard';
+import AdminDashboard from './pages/AdminDashboard';
 
 function App() {
   return (
@@ -39,6 +40,9 @@ function App() {
 
           {/* Rota do Dashboard sem Header (tem sidebar própria) */}
           <Route path="/dashboard" element={<Dashboard />} />
+
+          {/* Rota do Dashboard Administrativo */}
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
         </Routes>
       </div>
     </Router>

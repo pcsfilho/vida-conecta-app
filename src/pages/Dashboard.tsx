@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
 import {
   Home,
   FileText,
@@ -8,7 +7,6 @@ import {
   Activity,
   BarChart3,
   HeadphonesIcon,
-  Bell,
   Download,
   Clock,
   CheckCircle,
@@ -23,16 +21,7 @@ import PropostaContent from "../components/PropostaContent";
 import ContratoContent from "../components/ContratoContent";
 import SuportePage from "../components/SuportePage";
 
-interface DashboardData {
-  cnpj: string;
-  nomeEmpresa: string;
-  nomeResponsavel: string;
-  email: string;
-}
-
 const Dashboard = () => {
-  const location = useLocation();
-  const userData = location.state as DashboardData;
   const [activeMenu, setActiveMenu] = useState("inicio");
   const [showPropostaModal, setShowPropostaModal] = useState(false);
   const [showContratoModal, setShowContratoModal] = useState(false);
