@@ -170,7 +170,7 @@ const Proposta = () => {
                 </p>
               </div>
               <div className="text-right">
-                <p className="text-gray-600">Implementação única</p>
+                {/* <p className="text-gray-600">Implementação única</p> */}
                 <p className="font-bold text-gray-900">
                   R$ {investimentoMax.toLocaleString("pt-BR")}
                 </p>
